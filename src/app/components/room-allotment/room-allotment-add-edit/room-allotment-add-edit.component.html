@@ -1,0 +1,130 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">{{ isEditMode ? 'Edit Room Allotment' : 'Add Room Allotment' }}</h2>
+  <hr/>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="roomAllotmentForm">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <div class="card">
+          <div class="card-body">
+
+<!--            &lt;!&ndash; Student ID and Room ID Fields &ndash;&gt;-->
+<!--            <div class="row mb-3">-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="studentId">Student ID</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="studentId"-->
+<!--                  id="studentId"-->
+<!--                  type="number"-->
+<!--                  placeholder="E.g. 123"-->
+<!--                />-->
+<!--              </div>-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="roomId">Room ID</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="roomId"-->
+<!--                  id="roomId"-->
+<!--                  type="number"-->
+<!--                  placeholder="E.g. 101"-->
+<!--                />-->
+<!--              </div>-->
+<!--            </div>-->
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="studentId">Student ID</label>
+                <select
+                  class="form-control"
+                  formControlName="studentId"
+                  id="studentId"
+                >
+                  <option *ngFor="let student of students" [value]="student.id">
+                    {{ student.name }} (ID: {{ student.id }})
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="roomId">Room ID</label>
+                <select
+                  class="form-control"
+                  formControlName="roomId"
+                  id="roomId"
+                >
+                  <option *ngFor="let room of rooms" [value]="room.id">
+                    Room {{ room.roomNumber }} (ID: {{ room.id }})
+                  </option>
+                </select>
+              </div>
+            </div>
+
+
+            <!-- Allotment Date Field -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="allotmentDate">Allotment Date</label>
+                <input
+                  class="form-control"
+                  formControlName="allotmentDate"
+                  id="allotmentDate"
+                  type="date"
+                />
+              </div>
+
+              <!-- Duration Field -->
+              <div class="col-md-6">
+                <label class="form-label" for="duration">Duration</label>
+                <input
+                  class="form-control"
+                  formControlName="duration"
+                  id="duration"
+                  type="text"
+                  placeholder="E.g. 30"
+                />
+              </div>
+            </div>
+
+            <!-- Check-In and Check-Out Fields -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="checkIn">Check-In Date</label>
+                <input
+                  class="form-control"
+                  formControlName="checkIn"
+                  id="checkIn"
+                  type="date"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="checkOut">Check-Out Date</label>
+                <input
+                  class="form-control"
+                  formControlName="checkOut"
+                  id="checkOut"
+                  type="date"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group text-center mt-3 d-flex justify-content-center">
+        <a class="btn btn-secondary ms-3 me-2" (click)="roomAllotmentService.backToList()">Back to List</a>
+        <button class="btn btn-primary" type="submit">
+          {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
+      </div>
+
+    </div>
+  </form>
+
+  <!-- Error Messages -->
+  <div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3" role="alert">
+    <ul>
+      <li *ngFor="let error of errorMessages">{{ error }}</li>
+    </ul>
+  </div>
+</div>

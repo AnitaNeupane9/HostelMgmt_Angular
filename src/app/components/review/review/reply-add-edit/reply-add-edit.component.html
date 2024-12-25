@@ -1,0 +1,37 @@
+<div class="modal show d-block" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ replyId ? 'Edit Reply' : 'Add Reply' }}</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="replyForm">
+          <div class="mb-3">
+            <label for="replyContent" class="form-label">Reply Content</label>
+            <textarea
+              id="replyContent"
+              class="form-control"
+              rows="3"
+              formControlName="content"
+            ></textarea>
+            <div
+              *ngIf="replyForm.get('content')?.invalid && replyForm.get('content')?.touched"
+              class="text-danger"
+            >
+              Reply content is required (min 2 characters).
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveReply()">
+          {{ replyId ? 'Update' : 'Add' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

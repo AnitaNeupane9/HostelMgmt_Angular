@@ -1,0 +1,44 @@
+.navbar {
+  z-index: 1000;
+  position: relative;
+  background-color: #2B9BF4;
+  color: white !important;
+  height: 70px;
+  padding: 0;
+}
+
+.navbar .container {
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  color: white !important;
+  text-transform: uppercase;
+  margin-right: 50px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #FFD700 !important;
+}
+
+/*.username-greeting {*/
+/*  color: white !important;*/
+/*  font-size: 1.2rem;*/
+/*  padding: 0.5rem 1rem;*/
+/*  font-weight: bold;*/
+/*}*/
+

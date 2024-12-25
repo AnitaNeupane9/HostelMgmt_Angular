@@ -1,0 +1,65 @@
+<div class="modal show d-block" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ reviewId ? 'Edit Review' : 'Add Review' }}</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="reviewForm">
+          <!-- Star Rating Input -->
+          <div class="mb-3">
+            <label class="form-label">Rating</label>
+            <div class="d-flex align-items-center">
+              <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                <i
+                  class="fa"
+                  [class.fa-star]="reviewForm.get('rating')?.value > i"
+                  [class.fa-star-o]="reviewForm.get('rating')?.value <= i"
+                  (click)="setRating(i + 1)"
+                  style="cursor: pointer; color: gold; font-size: 1.5rem; margin-right: 5px;"
+                ></i>
+              </ng-container>
+            </div>
+            <div
+              *ngIf="reviewForm.get('rating')?.invalid && reviewForm.get('rating')?.touched"
+              class="text-danger mt-2"
+            >
+              Rating is required.
+            </div>
+          </div>
+
+          <!-- Content Input -->
+          <div class="mb-3">
+            <label for="reviewContent" class="form-label">Review Content</label>
+            <textarea
+              id="reviewContent"
+              class="form-control"
+              rows="3"
+              formControlName="content"
+            ></textarea>
+            <div
+              *ngIf="reviewForm.get('content')?.invalid && reviewForm.get('content')?.touched"
+              class="text-danger"
+            >
+              Review content is required (min 5 characters).
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="reviewForm.invalid"
+          (click)="saveReview()"
+        >
+          {{ reviewId ? 'Update' : 'Add' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

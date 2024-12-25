@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">Hostel Management</a>
+    <div class="navbar-nav ms-auto">
+
+      <!-- Login and Register links only if the user is not logged in -->
+
+      @if (!isLoggedIn){
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/studentRegistration">Register</a>
+      </li>
+      }
+      @if (isLoggedIn){
+<!--              <li class="nav-item">-->
+<!--                  <a class="nav-link" routerLink="/dashboard">Dashboard</a>-->
+<!--                </li>-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
+
+        @if (authService.getRole() == 'ADMIN'){
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/employee">Employee</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/student">Student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/complaint">Complaint</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/room-allotment">RoomAllotment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/room">Room</a>
+          </li>
+        }
+        @else if (authService.getRole() == 'WARDEN'){
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/student">Student</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/complaint">Complaint</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/room-allotment">Room-Allotment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/room">Room</a>
+          </li>
+        }
+        @else if (authService.getRole() == 'STUDENT'){
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/complaint">Complaint</a>
+          </li>
+        }
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/review">Reviews</a>
+        </li>
+      }
+
+      <!-- Logout link -->
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </div>
+  </div>
+</nav>
+
+<div class="container pt-2">
+  <router-outlet></router-outlet>
+</div>

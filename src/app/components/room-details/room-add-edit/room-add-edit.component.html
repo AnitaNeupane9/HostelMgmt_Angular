@@ -1,0 +1,116 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">{{ isEditMode ? 'Edit Room Detail' : 'Add Room Detail' }}</h2>
+  <hr/>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="roomForm">
+    <div class="row">
+      <div class="col-md-10 mx-auto">
+        <div class="card">
+          <div class="card-body">
+
+            <!-- Room Number and Floor Field -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="roomNumber">Room Number</label>
+                <input
+                  class="form-control"
+                  formControlName="roomNumber"
+                  id="roomNumber"
+                  type="text"
+                  placeholder="E.g. 1A"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="floor">Floor</label>
+                <input
+                  class="form-control"
+                  formControlName="floor"
+                  id="floor"
+                  type="number"
+                  placeholder="E.g. 1"
+                />
+              </div>
+            </div>
+
+            <!-- Room Type and Capacity Field -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="roomType">Room Type</label>
+                <input
+                  class="form-control"
+                  formControlName="roomType"
+                  id="roomType"
+                  placeholder="E.g. DOUBLE"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="capacity">Capacity</label>
+                <input
+                  class="form-control"
+                  formControlName="capacity"
+                  id="capacity"
+                  placeholder="E.g. 2"
+                  type="number"
+                />
+              </div>
+            </div>
+
+            <!-- Occupied and Available Slots Fields -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="currentStudentCount">Current Student Slots</label>
+                <input
+                  class="form-control"
+                  formControlName="currentStudentCount"
+                  id="currentStudentCount"
+                  placeholder="E.g. 1"
+                  type="number"
+                />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="availableStudentSlots">Available Student Slots</label>
+                <input
+                  class="form-control"
+                  formControlName="availableStudentSlots"
+                  id="availableStudentSlots"
+                  placeholder="E.g. 1"
+                  type="number"
+                />
+              </div>
+            </div>
+
+            <!-- Status Field -->
+            <div class="row justify-content-center mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="status">Status</label>
+                <select id="status" formControlName="status" class="form-control">
+                  <option value="">Select Status</option>
+                  <option value="AVAILABLE">AVAILABLE</option>
+                  <option value="OCCUPIED">OCCUPIED</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group text-center mt-3 d-flex justify-content-center">
+          <a class="btn btn-secondary ms-3 me-2" (click)="roomService.backToList()">Back to List</a>
+        <button class="btn btn-primary" type="submit">
+          {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<!-- Error Messages -->
+<div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3" role="alert">
+  <ul>
+    <li *ngFor="let error of errorMessages">{{ error }}</li>
+  </ul>
+</div>

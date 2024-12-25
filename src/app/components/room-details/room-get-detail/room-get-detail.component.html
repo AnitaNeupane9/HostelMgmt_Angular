@@ -1,0 +1,51 @@
+<div class="container mt-8 pt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-primary shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title mb-0 text-center">Employee Detail</h4>
+        </div>
+        <div class="card-body">
+          <dl class="row ms-4">
+            <dt class="col-sm-4">Room ID</dt>
+            <dd class="col-sm-8">{{ roomDetail?.id }}</dd>
+
+            <dt class="col-sm-4">Room Number</dt>
+            <dd class="col-sm-8">{{ roomDetail?.roomNumber }}</dd>
+
+            <dt class="col-sm-4">Floor</dt>
+            <dd class="col-sm-8">{{ roomDetail?.floor }}</dd>
+
+            <dt class="col-sm-4">Room Type</dt>
+            <dd class="col-sm-8">{{ roomDetail?.roomType }}</dd>
+
+            <dt class="col-sm-4">Capacity</dt>
+            <dd class="col-sm-8">{{ roomDetail?.capacity }}</dd>
+
+            <dt class="col-sm-4">Occupied Slots</dt>
+            <dd class="col-sm-8">{{ roomDetail?.currentStudentCount }}</dd>
+
+            <dt class="col-sm-4">Available Slots</dt>
+            <dd class="col-sm-8">{{ roomDetail?.availableStudentSlots  }}</dd>
+
+            <dt class="col-sm-4">Status</dt>
+            <dd class="col-sm-8">
+              @if (roomDetail?.status == 'AVAILABLE') {
+                <span class="badge bg-success">AVAILABLE</span>
+              }
+              @if (roomDetail?.status == 'OCCUPIED') {
+                <span class="badge bg-danger">OCCUPIED</span>
+              }
+            </dd>
+
+          </dl>
+        </div>
+        <div class="card-footer bg-white text-center">
+          <button class="btn btn-primary px-4 py-2 shadow-sm" (click)="roomDetailService.backToList()">
+            <i class="bi bi-arrow-left-circle"></i> Back to List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

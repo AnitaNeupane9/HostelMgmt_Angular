@@ -1,0 +1,63 @@
+<div class="container mt-8 justify-content-center">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-primary shadow"> <!-- Added padding to the card -->
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title mb-0 text-center">Employee Detail</h4>
+        </div>
+        <div class="card-body">
+          <dl class="row ms-4">
+            <dt class="col-sm-4">Student ID</dt>
+            <dd class="col-sm-8">{{ studentDetail?.id }}</dd>
+
+            <dt class="col-sm-4">Name</dt>
+            <dd class="col-sm-8">{{ studentDetail?.name }}</dd>
+
+            <dt class="col-sm-4">Username</dt>
+            <dd class="col-sm-8">{{ studentDetail?.username }}</dd>
+
+            <dt class="col-sm-4">Contact Number</dt>
+            <dd class="col-sm-8">{{ studentDetail?.contactNumber }}</dd>
+
+            <dt class="col-sm-4">Address</dt>
+            <dd class="col-sm-8">{{ studentDetail?.address }}</dd>
+
+            <dt class="col-sm-4">DOB</dt>
+            <dd class="col-sm-8">{{ studentDetail?.dateOfBirth  | date }}</dd>
+
+            <dt class="col-sm-4">Gender</dt>
+            <dd class="col-sm-8">{{ studentDetail?.gender }}</dd>
+
+            <dt class="col-sm-4">Nationality</dt>
+            <dd class="col-sm-8">{{ studentDetail?.nationality }}</dd>
+
+            <dt class="col-sm-4">Emergency Conatct</dt>
+            <dd class="col-sm-8">{{ studentDetail?.emergencyContact }}</dd>
+
+            <dt class="col-sm-4">Parent Contact</dt>
+            <dd class="col-sm-8">{{ studentDetail?.parentContact}}</dd>
+
+            <dt class="col-sm-4">ID Proof</dt>
+            <dd class="col-sm-8">{{ studentDetail?.idProof }}</dd>
+
+            <dt class="col-sm-4">Active</dt>
+            <dd class="col-sm-8">
+              @if (studentDetail?.active) {
+                <span class="badge bg-success">Yes</span>
+              }
+              @else {
+              <span class="badge bg-danger">No</span>
+              }
+            </dd>
+
+          </dl>
+        </div>
+        <div class="card-footer bg-white text-center">
+          <button class="btn btn-primary px-4 py-2 shadow-sm" (click)="studentService.backToList()">
+            <i class="bi bi-arrow-left-circle"></i> Back to List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

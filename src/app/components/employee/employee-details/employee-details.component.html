@@ -1,0 +1,52 @@
+<div class="container mt-8 pt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-primary shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title mb-0 text-center">Employee Detail</h4>
+        </div>
+        <div class="card-body">
+          <dl class="row ms-4">
+            <dt class="col-sm-4">Employee ID</dt>
+            <dd class="col-sm-8">{{ employeedetail?.id }}</dd>
+
+            <dt class="col-sm-4">Name</dt>
+            <dd class="col-sm-8">{{ employeedetail?.name }}</dd>
+
+            <dt class="col-sm-4">Contact Number</dt>
+            <dd class="col-sm-8">{{ employeedetail?.contactNumber }}</dd>
+
+            <dt class="col-sm-4">Address</dt>
+            <dd class="col-sm-8">{{ employeedetail?.address }}</dd>
+
+            <dt class="col-sm-4">Username</dt>
+            <dd class="col-sm-8">{{ employeedetail?.username }}</dd>
+
+            <dt class="col-sm-4">Role</dt>
+            <dd class="col-sm-8">{{ employeedetail?.role }}</dd>
+
+            <dt class="col-sm-4">Hire Date</dt>
+            <dd class="col-sm-8">{{ employeedetail?.hireDate | date }}</dd>
+
+            <dt class="col-sm-4">Employment End Date</dt>
+            <dd class="col-sm-8">{{ employeedetail?.employmentEndDate | date }}</dd>
+
+            <dt class="col-sm-4">Shift Starts At</dt>
+            <dd class="col-sm-8">{{ employeedetail?.shiftStartsAt }}</dd>
+
+            <dt class="col-sm-4">Shift Ends At</dt>
+            <dd class="col-sm-8">{{ employeedetail?.shiftEndsAt }}</dd>
+
+            <dt class="col-sm-4">ID Proof</dt>
+            <dd class="col-sm-8">{{ employeedetail?.idProof }}</dd>
+          </dl>
+        </div>
+        <div class="card-footer bg-white text-center">
+          <button class="btn btn-primary px-4 py-2 shadow-sm" (click)="employeeService.backToList()">
+            <i class="bi bi-arrow-left-circle"></i> Back to List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

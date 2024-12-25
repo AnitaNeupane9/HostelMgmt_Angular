@@ -1,1 +1,39 @@
-<p>employee works!</p>
+<h1 class="text-center">Manage Employee</h1>
+<hr />
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-success float-end mb-3" (click)="addEmployee()">Add Employee</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- employees Table -->
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+        <tr>
+          <th>S.N.</th>
+          <th>Employee Name</th>
+          <th>Email</th>
+          <th>Job Role</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of employeeList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.username }}</td>
+          <td>{{employee.role}}</td>
+          <td>
+            <button class="btn btn-light shadow btn-sm me-1" (click)="viewDetail(employee.id)">Detail</button>
+            <button class="btn btn-primary shadow btn-sm me-1" (click)="editEmployee(employee.id)">Edit</button>
+            <button class="btn btn-danger shadow btn-sm" (click)="deleteEmployee(employee.id)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

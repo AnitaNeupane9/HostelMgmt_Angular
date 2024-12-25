@@ -1,0 +1,50 @@
+<div class="container mt-8 pt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-primary shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title mb-0 text-center">Complaint Detail</h4>
+        </div>
+        <div class="card-body">
+          <dl class="row ms-4">
+            <dt class="col-sm-4">Complaint ID</dt>
+            <dd class="col-sm-8">{{ complaintDetail?.id }}</dd>
+
+            <dt class="col-sm-4">Topic</dt>
+            <dd class="col-sm-8">{{ complaintDetail?.topic }}</dd>
+
+            <dt class="col-sm-4">Date Filed</dt>
+            <dd class="col-sm-8">{{ complaintDetail?.dateFiled }}</dd>
+
+            <dt class="col-sm-4">Filed By:</dt>
+            <dd class="col-sm-8">{{ complaintDetail?.student?.name }}</dd>
+
+            <dt class="col-sm-4">Student Username</dt>
+            <dd class="col-sm-8">{{ complaintDetail?.student?.username }}</dd>
+
+            <dt class="col-sm-4">Severity Level</dt>
+            <dd class="col-sm-8">{{ complaintDetail?.severityLevel }}</dd>
+
+            <dt class="col-sm-4">Resolved</dt>
+            <dd class="col-sm-8">
+              @if (complaintDetail?.resolved) {
+                <span class="badge bg-success">Yes</span>
+              }
+              @else {
+                <span class="badge bg-danger">No</span>
+              }
+            </dd>
+
+            <dt class="col-sm-4">Date Resolved</dt>
+            <dd class="col-sm-8">{{ complaintDetail?.dateResolved}}</dd>
+          </dl>
+        </div>
+        <div class="card-footer bg-white text-center">
+          <button class="btn btn-primary px-4 py-2 shadow-sm" (click)="complaintService.backToList()">
+            <i class="bi bi-arrow-left-circle"></i> Back to List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

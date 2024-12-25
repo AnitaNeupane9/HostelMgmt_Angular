@@ -1,0 +1,112 @@
+.review-container {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-heading {
+  margin-bottom: 20px;
+}
+
+.review-heading h2 {
+  text-align: center;
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+
+.review-details {
+  display: flex;
+  align-items: center;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.stars {
+  display: flex;
+}
+
+.stars .fa {
+  color: darkorange;
+  margin-right: 5px;
+}
+
+.review-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.review-actions a {
+  text-decoration: none;
+  color: #555;
+  font-size: 18px;
+}
+
+.review-actions a:hover {
+  color: #007bff;
+}
+
+.review-content {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 3px solid #007bff;
+  font-style: italic;
+  color: #555;
+}
+
+/*reply section css*/
+
+.reply-container {
+  margin-left: 30px;
+  margin-top: 10px;
+  border-left: 2px solid #ddd;
+  padding-left: 15px;
+}
+
+.reply-card {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reply-name {
+  font-weight: bold;
+  color: #555;
+}
+
+.reply-actions a {
+  color: #777;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.reply-actions a:hover {
+  color: #333;
+}
+
+.reply-content p {
+  color: #555;
+  margin-top: 5px;
+}

@@ -1,0 +1,364 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">{{ isEditMode ? 'Edit Employee' : 'Add Employee' }}</h2>
+  <hr />
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="addEmployeeForm">
+    <div class="row">
+      <!-- Personal Information Section -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Personal Information</h5>
+          </div>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  formControlName="name"
+                  class="form-control"
+                  placeholder="E.g. Anita Neupane"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="idProof" class="form-label">Citizenship No.</label>
+                <input
+                  type="text"
+                  id="idProof"
+                  formControlName="idProof"
+                  class="form-control"
+                  placeholder="E.g. 01-23-0987"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="address" class="form-label">Address</label>
+                <input
+                  type="text"
+                  id="address"
+                  formControlName="address"
+                  class="form-control"
+                  placeholder="E.g. Rasuwa"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="contactNumber" class="form-label">Contact Number</label>
+                <input
+                  type="text"
+                  id="contactNumber"
+                  formControlName="contactNumber"
+                  class="form-control"
+                  placeholder="E.g. +977 9800000000"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  type="email"
+                  id="username"
+                  formControlName="username"
+                  class="form-control"
+                  placeholder="E.g. anita@gmail.com"
+                />
+              </div>
+              <div class="col-md-6" *ngIf="!isEditMode">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="E.g. @Anita&99"
+                  [disabled]="isEditMode"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employment Information Section -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Employment Information</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <select id="role" formControlName="role" class="form-control">
+                <option value="">Select Role</option>
+                <option value="ACCOUNTANT">ACCOUNTANT</option>
+                <option value="WARDEN">WARDEN</option>
+              </select>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="hireDate" class="form-label">Hire Date</label>
+                <input
+                  type="date"
+                  id="hireDate"
+                  formControlName="hireDate"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="employmentEndDate" class="form-label">Employment End</label>
+                <input
+                  type="date"
+                  id="employmentEndDate"
+                  formControlName="employmentEndDate"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="shiftStartsAt" class="form-label">Shift Starts</label>
+                <input
+                  type="time"
+                  id="shiftStartsAt"
+                  formControlName="shiftStartsAt"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="shiftEndsAt" class="form-label">Shift Ends</label>
+                <input
+                  type="time"
+                  id="shiftEndsAt"
+                  formControlName="shiftEndsAt"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group text-center mt-3">
+      <button class="btn btn-secondary" (click)=employeeService.backToList()>
+        Back to List
+      </button>
+      <button class="btn btn-primary" type="submit">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+    </div>
+  </form>
+
+  <!-- Error Messages -->
+  <div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3" role="alert">
+    <ul>
+      <li *ngFor="let error of errorMessages">{{ error }}</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--<div class="container mt-4">-->
+<!--  <h2 class="text-center mb-4">Add Employee</h2>-->
+<!--  <h4 class="text-center mb-4">Register New Employee</h4>-->
+<!--  <hr/>-->
+
+<!--  <form (ngSubmit)="onAddEmployee()" [formGroup]="addEmployeeForm">-->
+<!--    <div class="row">-->
+
+<!--      &lt;!&ndash; First Card: Personal Information &ndash;&gt;-->
+<!--      <div class="col-md-6">-->
+<!--        <div class="card">-->
+<!--          <div class="card-header text-center">-->
+<!--            <h5>Personal Information</h5>-->
+<!--          </div>-->
+<!--          <div class="card-body">-->
+
+<!--            &lt;!&ndash; Name and ID proof Field &ndash;&gt;-->
+<!--            <div class="row mb-3">-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="name">Name</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="name"-->
+<!--                  id="name"-->
+<!--                  type="text"-->
+<!--                  placeholder="E.g. Anita Neupane"-->
+<!--                />-->
+<!--              </div>-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="idProof">Citizenship No.</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="idProof"-->
+<!--                  id="idProof"-->
+<!--                  type="text"-->
+<!--                  placeholder="E.g. 01-23-0987"-->
+<!--                />-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Address and Contact Fields&ndash;&gt;-->
+<!--            <div class="row">-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="address">Address</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="address"-->
+<!--                  id="address"-->
+<!--                  placeholder="E.g. Rasuwa"-->
+<!--                  type="text"-->
+<!--                />-->
+<!--              </div>-->
+<!--              <div class="col-md-4">-->
+<!--                <label class="form-label" for="contactNumber">Contact Number</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="contactNumber"-->
+<!--                  id="contactNumber"-->
+<!--                  placeholder="E.g. +977 9800000000"-->
+<!--                  type="text"-->
+<!--                />-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Username and Password Fields &ndash;&gt;-->
+<!--            <div class="row mb-3">-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="username">Username</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="username"-->
+<!--                  id="username"-->
+<!--                  placeholder="E.g. anita@gmail.com"-->
+<!--                  type="email"-->
+<!--                />-->
+<!--              </div>-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="password">Password</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="password"-->
+<!--                  id="password"-->
+<!--                  placeholder="E.g. @Anita&99"-->
+<!--                  type="password"-->
+<!--                />-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Second Card: Employment Information &ndash;&gt;-->
+<!--      <div class="col-md-6">-->
+<!--        <div class="card">-->
+<!--          <div class="card-header text-center">-->
+<!--            <h5>Employment Information</h5>-->
+<!--          </div>-->
+<!--          <div class="card-body">-->
+
+<!--            <div class="mb-3">-->
+<!--              <label for="role" class="form-label">Role</label>-->
+<!--              <select id="role" formControlName="role" class="form-control">-->
+<!--                <option value="">Select Role</option>-->
+<!--                <option value="ACCOUNTANT">ACCOUNTANT</option>-->
+<!--                <option value="WARDEN">WARDEN</option>-->
+<!--              </select>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Hire and EmploymentEnd Fields &ndash;&gt;-->
+<!--            <div class="row mb-3">-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="hireDate">Hire Date</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="hireDate"-->
+<!--                  id="hireDate"-->
+<!--                  type="date"-->
+<!--                />-->
+<!--              </div>-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="employmentEndDate">Employment End</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="employmentEndDate"-->
+<!--                  id="employmentEndDate"-->
+<!--                  type="date"-->
+<!--                />-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Shift Starts and Ends Fields &ndash;&gt;-->
+<!--            <div class="row mb-3">-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="shiftStartsAt">Shift Starts</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="shiftStartsAt"-->
+<!--                  id="shiftStartsAt"-->
+<!--                  placeholder="E.g. HH:MM:ss (10:00:00)"-->
+<!--                  type="time"-->
+<!--                />-->
+<!--              </div>-->
+<!--              <div class="col-md-6">-->
+<!--                <label class="form-label" for="shiftEndsAt">Shift Ends</label>-->
+<!--                <input-->
+<!--                  class="form-control"-->
+<!--                  formControlName="shiftEndsAt"-->
+<!--                  id="shiftEndsAt"-->
+<!--                  placeholder="E.g. HH:MM:ss (10:00:00)"-->
+<!--                  type="time"-->
+<!--                />-->
+<!--              </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Submit Button &ndash;&gt;-->
+<!--    <div class="form-group text-center mt-3">-->
+<!--      <a class="btn btn-secondary float-start ms-3">Back to List</a>-->
+<!--&lt;!&ndash;      @if (Em > 0)&ndash;&gt;-->
+<!--&lt;!&ndash;      {&ndash;&gt;-->
+<!--        <button class="btn btn-primary float-end" type="submit">Update</button>-->
+<!--&lt;!&ndash;      }&ndash;&gt;-->
+<!--&lt;!&ndash;      else&ndash;&gt;-->
+<!--&lt;!&ndash;      {&ndash;&gt;-->
+<!--      <button class="btn btn-primary float-end" type="submit">Create</button>-->
+<!--&lt;!&ndash;      }&ndash;&gt;-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash;<div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3" role="alert">&ndash;&gt;-->
+<!--&lt;!&ndash;  <ul class="no-bullets">&ndash;&gt;-->
+<!--&lt;!&ndash;    <li *ngFor="let error of errorMessages">&ndash;&gt;-->
+<!--&lt;!&ndash;      <i class="fa fa-times text-danger"></i> {{ error }}&ndash;&gt;-->
+<!--&lt;!&ndash;    </li>&ndash;&gt;-->
+<!--&lt;!&ndash;  </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash; Error Messages &ndash;&gt;-->
+<!--<div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3" role="alert">-->
+<!--  <ul>-->
+<!--    <li *ngFor="let error of errorMessages">{{ error }}</li>-->
+<!--  </ul>-->
+<!--</div>-->

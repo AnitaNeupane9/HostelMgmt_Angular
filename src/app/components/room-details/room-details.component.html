@@ -1,1 +1,39 @@
-<p>room-details works!</p>
+<h1 class="text-center">Manage Rooms</h1>
+<hr/>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <button (click)="addRoom()" class="btn btn-success float-end mb-3">Add Room</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- room details Table -->
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+        <tr>
+          <th>S.N.</th>
+          <th>RoomNumber</th>
+          <th>Floor</th>
+          <th>Capacity</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let room of roomList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ room.roomNumber }}</td>
+          <td>{{ room.floor }}</td>
+          <td>{{ room.capacity }}</td>
+          <td>
+            <button (click)="viewDetail(room.id)" class="btn btn-light shadow btn-sm me-1">Detail</button>
+            <button (click)="editRoom(room.id)" class="btn btn-primary shadow btn-sm me-1">Edit</button>
+            <button (click)="deleteRoom(room.id)" class="btn btn-danger shadow btn-sm">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

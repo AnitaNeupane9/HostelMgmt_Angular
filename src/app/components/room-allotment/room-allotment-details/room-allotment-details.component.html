@@ -1,0 +1,41 @@
+<div class="container mt-8 pt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card border-primary shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title mb-0 text-center">Room Allotment Detail</h4>
+        </div>
+        <div class="card-body">
+          <dl class="row ms-4">
+            <dt class="col-sm-4">Allotment ID</dt>
+            <dd class="col-sm-8">{{ roomAllotmentDetail?.id }}</dd>
+
+            <dt class="col-sm-4">Assigned Student</dt>
+            <dd class="col-sm-8">{{ roomAllotmentDetail?.studentUsername  }}</dd>
+
+            <dt class="col-sm-4">Assigned Room</dt>
+            <dd class="col-sm-8">{{ roomAllotmentDetail?.roomNumber }}</dd>
+
+            <dt class="col-sm-4">Allotment Date</dt>
+            <dd class="col-sm-8">{{ roomAllotmentDetail?.allotmentDate }}</dd>
+
+            <dt class="col-sm-4">Duration</dt>
+            <dd class="col-sm-8">{{ roomAllotmentDetail?.duration }}</dd>
+
+            <dt class="col-sm-4">Check In</dt>
+            <dd class="col-sm-8">{{ roomAllotmentDetail?.checkIn }}</dd>
+
+            <dt class="col-sm-4">Check Out</dt>
+            <dd class="col-sm-8">{{ roomAllotmentDetail?.checkOut }}</dd>
+
+          </dl>
+        </div>
+        <div class="card-footer bg-white text-center">
+          <button class="btn btn-primary px-4 py-2 shadow-sm" (click)="roomAllotmentService.backToList()">
+            <i class="bi bi-arrow-left-circle"></i> Back to List
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

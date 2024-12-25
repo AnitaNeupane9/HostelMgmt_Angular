@@ -1,0 +1,184 @@
+<div class="container mt-4">
+<!--  <h1 class="text-center mb-4">Register</h1>-->
+  <h2 class="text-center mb-4">{{ isEditMode ? 'Update Student' : 'Student Registration' }}</h2>
+<!--  <h3 class="text-center mb-4">Create a New Account</h3>-->
+  <hr />
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <!-- First Card: Personal Information -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Personal Information</h5>
+          </div>
+          <div class="card-body">
+            <!-- Name Field -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                id="name"
+                formControlName="name"
+                type="text"
+                class="form-control"
+                placeholder="Your name"
+              />
+            </div>
+
+            <!-- Date of Birth and Gender Fields -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="dateOfBirth" class="form-label">DOB</label>
+                <input
+                  id="dateOfBirth"
+                  formControlName="dateOfBirth"
+                  type="date"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="gender" class="form-label">Gender</label>
+                <select id="gender" formControlName="gender" class="form-control">
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Address and Nationality Fields -->
+            <div class="row">
+              <div class="col-md-6">
+                <label for="address" class="form-label">Address</label>
+                <input
+                  id="address"
+                  formControlName="address"
+                  type="text"
+                  class="form-control"
+                  placeholder="Your address"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="nationality" class="form-label">Nationality</label>
+                <input
+                  id="nationality"
+                  formControlName="nationality"
+                  type="text"
+                  class="form-control"
+                  placeholder="Your nationality"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Card: Account and Contact Information -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Account and Contact Information</h5>
+          </div>
+          <div class="card-body">
+            <!-- Username and Password Fields -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  id="username"
+                  formControlName="username"
+                  type="email"
+                  class="form-control"
+                  placeholder="Your email"
+                />
+              </div>
+              <div class="col-md-6" *ngIf="!isEditMode">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  id="password"
+                  formControlName="password"
+                  type="password"
+                  class="form-control"
+                  placeholder="Your password"
+                />
+              </div>
+            </div>
+
+            <!-- Contact Fields -->
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="contactNumber" class="form-label">Contact Number</label>
+                <input
+                  id="contactNumber"
+                  formControlName="contactNumber"
+                  type="text"
+                  class="form-control"
+                  placeholder="Your contact number"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="parentContact" class="form-label">Parent Contact</label>
+                <input
+                  id="parentContact"
+                  formControlName="parentContact"
+                  type="text"
+                  class="form-control"
+                  placeholder="Parent's contact number"
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="emergencyContact" class="form-label">Emergency Contact</label>
+                <input
+                  id="emergencyContact"
+                  formControlName="emergencyContact"
+                  type="text"
+                  class="form-control"
+                  placeholder="Emergency contact number"
+                />
+              </div>
+            </div>
+
+            <!-- ID Proof Field -->
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="idProof" class="form-label">Id Proof</label>
+                <input
+                  id="idProof"
+                  formControlName="idProof"
+                  type="text"
+                  class="form-control"
+                  placeholder="Your citizenship number"
+                />
+              </div>
+              <div *ngIf="isEditMode" class="ms-2 col-md-4 form-check">
+                <input
+                  type="checkbox"
+                  id="active"
+                  formControlName="active"
+                  class="form-check-input"
+                />
+                <label for="active" class="form-check-label">Active</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group text-center mt-3 d-flex justify-content-center">
+      <a class="btn btn-secondary ms-3 me-2" (click)="studentService.backToList()">Back</a>
+      <button class="btn btn-primary" type="submit">
+        {{ isEditMode ? 'Update' : 'Register' }}
+      </button>
+    </div>
+  </form>
+</div>
+
+
+<!-- Error Messages -->
+<div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3" role="alert">
+  <ul>
+    <li *ngFor="let error of errorMessages">{{ error }}</li>
+  </ul>
+</div>

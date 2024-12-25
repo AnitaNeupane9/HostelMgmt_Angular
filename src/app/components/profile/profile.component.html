@@ -1,0 +1,139 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header text-center">
+      <h3>Profile Details</h3>
+    </div>
+    <div class="card-body">
+      <!-- Check if employee profile is loaded -->
+      <ng-container *ngIf="employeeProfile; else studentProfileTemplate">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label"><strong>ID:</strong></label>
+            <span>{{ employeeProfile.id }}</span>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label"><strong>Name:</strong></label>
+            <span>{{ employeeProfile.name }}</span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label"><strong>Contact Number:</strong></label>
+            <span>{{ employeeProfile.contactNumber }}</span>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label"><strong>Address:</strong></label>
+            <span>{{ employeeProfile.address }}</span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label"><strong>Username:</strong></label>
+            <span>{{ employeeProfile.username }}</span>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label"><strong>Role:</strong></label>
+            <span>{{ employeeProfile.role }}</span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label"><strong>Hire Date:</strong></label>
+            <span>{{ employeeProfile.hireDate }}</span>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label"><strong>Employment End Date:</strong></label>
+            <span>{{ employeeProfile.employmentEndDate }}</span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label"><strong>Shift Starts At:</strong></label>
+            <span>{{ employeeProfile.shiftStartsAt }}</span>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label"><strong>Shift Ends At:</strong></label>
+            <span>{{ employeeProfile.shiftEndsAt }}</span>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label class="form-label"><strong>ID Proof:</strong></label>
+            <span>{{ employeeProfile.idProof }}</span>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Student Profile Template -->
+      <ng-template #studentProfileTemplate>
+        <ng-container *ngIf="studentProfile; else loading">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>ID:</strong></label>
+              <span>{{ studentProfile.id }}</span>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><strong>Name:</strong></label>
+              <span>{{ studentProfile.name }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Gender:</strong></label>
+              <span>{{ studentProfile.gender }}</span>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><strong>Address:</strong></label>
+              <span>{{ studentProfile.address }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Nationality:</strong></label>
+              <span>{{ studentProfile.nationality }}</span>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><strong>Date of Birth:</strong></label>
+              <span>{{ studentProfile.dateOfBirth }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Contact Number:</strong></label>
+              <span>{{ studentProfile.contactNumber }}</span>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><strong>Parent Contact:</strong></label>
+              <span>{{ studentProfile.parentContact }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Emergency Contact:</strong></label>
+              <span>{{ studentProfile.emergencyContact }}</span>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><strong>Active:</strong></label>
+              <span>{{ studentProfile.active ? 'Yes' : 'No' }}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label class="form-label"><strong>ID Proof:</strong></label>
+              <span>{{ studentProfile.idProof }}</span>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+
+      <!-- Loading Spinner -->
+      <ng-template #loading>
+        <div class="text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="review-container p-4">
+  <div class="review-heading d-flex justify-content-between align-items-center">
+    <h2>Hostel Reviews</h2>
+
+    <button *ngIf="authService.getRole() == 'STUDENT'" (click)="addReview()" class="btn btn-success ml-auto">Add Review</button>
+  </div>
+
+  <!-- Review Section -->
+  <div *ngFor="let review of reviewList" class="review-card">
+    <div class="review-header">
+      <div class="review-details">
+        <span class="reviewer-name">{{ review.student.name }}</span>
+
+        <!-- Stars Rating -->
+        <div class="stars">
+          <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+            <i
+              [ngClass]="review.rating > i ? 'fa-star' : 'fa-star-o'"
+              class="fa"
+            ></i>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Edit and Delete Review -->
+      <div class="review-actions" *ngIf="authService.getUser() == review.student.username">
+        <a (click)="editReview(review.id)" title="Edit">
+          <i class="fa fa-edit"></i>
+        </a>
+        <a (click)="deleteReview(review.id)" title="Delete">
+          <i class="fa fa-trash"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Review Content -->
+    <div class="review-content">
+      <p>{{ review.content }}</p>
+    </div>
+
+    <!-- Add Like, Dislike, and Reply -->
+    <div class="action-buttons">
+      <a (click)="likeReview(review.id)" class="btn btn-light">
+        <i class="fa fa-thumbs-up link-primary"></i> ({{ review.likes }})
+      </a>
+      <a (click)="dislikeReview(review.id)" class="btn btn-light">
+        <i class="fa fa-thumbs-down link-danger"></i> ({{ review.dislikes }})
+      </a>
+      <a (click)="addReply(review.id)" class="btn btn-primary">
+        <i class="fa fa-reply"></i> Reply
+      </a>
+    </div>
+
+    <!-- Replies Section -->
+    <div *ngIf="review.replies && review.replies.length > 0" class="reply-container">
+      <div *ngFor="let reply of review.replies" class="reply-card">
+        <div class="reply-header">
+          <span class="reply-name">{{ reply.student?.name }}</span>
+
+          <div class="reply-actions" *ngIf="authService.getUser() == reply.student?.username">
+            <a (click)="editReply(review.id, reply.id)" title="Edit">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a (click)="deleteReply(review.id, reply.id)" title="Delete">
+              <i class="fa fa-trash"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="reply-content">
+          <p>{{ reply.content }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reply Modal Component -->
+<app-reply-add-edit
+  (close)="closeReplyModal()"
+  (replyUpdated)="getAllReviews()"
+  *ngIf="isReplyModalOpen"
+  [replyId]="currentReplyId"
+  [reviewId]="currentReviewId"
+></app-reply-add-edit>
+
+<app-review-add-edit
+  (close)="closeReviewModal()"
+  (reviewUpdated)="getAllReviews()"
+  *ngIf="isReviewModalOpen"
+  [reviewId]="currentReviewId"
+></app-review-add-edit>

@@ -1,0 +1,47 @@
+/* Body should fill the entire height of the viewport */
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  margin: 0;
+  padding: 100px;
+  overflow: hidden;
+}
+
+/* Login container styling */
+.login-container {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Heading and button styles */
+h2 {
+  color: #2B9BF4;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #2B9BF4;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #1d85cf;
+}
+
+a {
+  color: #2B9BF4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

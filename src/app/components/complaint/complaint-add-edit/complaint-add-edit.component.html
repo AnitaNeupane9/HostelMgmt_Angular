@@ -1,0 +1,105 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">
+    {{ isEditMode ? 'Edit Complaint' : 'Add Complaint' }}
+  </h2>
+  <hr />
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="complaintForm">
+    <div class="row">
+      <!-- Complaint Information Section -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Complaint Details</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="topic" class="form-label">Topic</label>
+              <input
+                type="text"
+                id="topic"
+                formControlName="topic"
+                class="form-control"
+                placeholder="Enter complaint topic"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                id="description"
+                formControlName="description"
+                class="form-control"
+                rows="3"
+                placeholder="Describe the issue..."
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="severityLevel" class="form-label">Severity Level</label>
+              <select
+                id="severityLevel"
+                formControlName="severityLevel"
+                class="form-control"
+              >
+                <option value="">Select Severity</option>
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH">High</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status and Resolution Section -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header text-center">
+            <h5>Resolution Status</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="dateFiled" class="form-label">Date Filed</label>
+              <input
+                type="date"
+                id="dateFiled"
+                formControlName="dateFiled"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="dateResolved" class="form-label">Date Resolved</label>
+              <input
+                type="date"
+                id="dateResolved"
+                formControlName="dateResolved"
+                class="form-control"
+              />
+            </div>
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                id="resolved"
+                formControlName="resolved"
+                class="form-check-input"
+              />
+              <label for="resolved" class="form-check-label">Resolved</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group text-center mt-3">
+      <button class="btn btn-secondary me-2" (click)="complaintService.backToList()">Back</button>
+      <button class="btn btn-primary" type="submit">
+        {{ isEditMode ? 'Update Complaint' : 'Submit Complaint' }}
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="errorMessages.length > 0" class="alert alert-danger mt-3" role="alert">
+    <ul>
+      <li *ngFor="let error of errorMessages">{{ error }}</li>
+    </ul>
+  </div>
+</div>

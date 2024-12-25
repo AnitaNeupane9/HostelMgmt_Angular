@@ -1,0 +1,11 @@
+<div class="text-center my-5 landing-page">
+  <h1 class="display-4">Welcome to the Hostel Management System</h1>
+  <p class="lead">Efficiently manage hostel facilities, student accommodations, and operations all in one place.</p>
+  <hr class="my-4">
+  <p>Streamline hostel administration with advanced features and user-friendly design.</p>
+  @if (!authService.isLoggedIn()) {
+    <a class="btn btn-primary btn-lg" routerLink="/login" role="button">Get Started</a>
+  }
+</div>
+
+<div class="background-icons"></div>
